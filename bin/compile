@@ -157,21 +157,8 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     # Install gulp locally
     npm install gulp
     echo "-----> Found gulpfile, running gulp heroku:$NODE_ENV task"
-    $build_dir/node_modules/.bin/gulp heroku:$NODE_ENV
+    $build_dir/node_modules/.bin/gulp build
   else
     echo "-----> No gulpfile found"
   fi
 )
-
-# Post package.json to nomnom service
-# Use a subshell so failures won't break the build.
-(
-  curl \
-    --data @$build_dir/package.json \
-    --fail \
-    --silent \
-    --request POST \
-    --header "content-type: application/json" \
-    https://nomnom.heroku.com/?request_id=$REQUEST_ID \
-    > /dev/null
-) &
