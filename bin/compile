@@ -138,7 +138,7 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     # Install bower locally
     npm install bower
     echo "-----> Found bower.json, running bower install"
-    $build_dir/node_modules/.bin/bower install
+    $build_dir/node_modules/.bin/bower install --allow-root
   else
     echo "-----> No bower.json found"
   fi
